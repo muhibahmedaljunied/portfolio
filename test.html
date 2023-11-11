@@ -1,0 +1,58 @@
+def invers_kinematics_right(self):
+self.S = np.arccos(self.Lg.H01_1[0][0])
+print('sssssssssssssssssssssssssssss',self.S)
+self.L = np.arccos(self.Lg.H01_1[1][2])
+print('lllllllllllllllll',self.L)
+self.Lg.P000 = [[0] * 1] * 4
+for i in range(4):
+    if i == 3:
+        self.Lg.P000[i] = [1]
+    else:
+        self.Lg.array_entry_invers_values.append(int(self.Lg.array_entry_invers[i].get()))
+        self.Lg.P000[i] = [int(self.Lg.array_entry_invers[i].get())]
+
+print('array_entry_invers_values',self.Lg.array_entry_invers_values,self.Lg.P000)
+
+self.Lg.P0 = np.dot(self.Lg.HT0_000,self.Lg.P000)
+print('P0_____________________p0__', self.Lg.P0)
+print('P0_____________________',self.Lg.P0[0][0],self.Lg.P0[1][0])
+
+first_theta_dash_1,first_theta_dash_2 = self.find_theta_dash(0)
+print('first_theta_dash_1_first_theta_dash_2', first_theta_dash_1, first_theta_dash_2)
+theta_1 = np.dot(np.add(np.divide(first_theta_dash_1, self.Lg.factor1), self.Lg.theta_p_center), self.Lg.degrad)
+theta_2 = np.dot(np.add(np.divide(first_theta_dash_2, self.Lg.factor2), self.Lg.theta_t_center), self.Lg.degrad)
+print('first_theta_1__in_invders_before', theta_1, theta_2)
+if (theta_1 >= 360 and theta_1 < 720):
+    theta_1 = theta_1 - 360
+if (theta_2 >= 360 and theta_2 < 720):
+    theta_2 = theta_2 - 360
+
+if (theta_1 >= 720):
+    theta_1 = theta_1 - 720
+if (theta_2 >= 720):
+    theta_2 = theta_2 - 720
+
+print('first_theta_1__in_invers_before', theta_1,theta_2)
+self.Lg.output_array[0].insert(0, theta_1)
+self.Lg.output_array[1].insert(0, theta_2)
+# =========================================================================================================
+second_theta_dash_1,second_theta_dash_2 =self.find_theta_dash(1)
+print('second_theta_dash_1_second_theta_dash_2', second_theta_dash_1, second_theta_dash_2)
+theta_1 = np.dot(np.add(np.divide(second_theta_dash_1, self.Lg.factor1), self.Lg.theta_p_center), self.Lg.degrad)
+theta_2 = np.dot(np.add(np.divide(second_theta_dash_2, self.Lg.factor2), self.Lg.theta_t_center), self.Lg.degrad)
+
+if (theta_1 >= 360 and theta_1 < 720):
+    theta_1 = theta_1 - 360
+if (theta_2 >= 360 and theta_2 < 720):
+    theta_2 = theta_2 - 360
+
+if (theta_1 >= 720 ):
+    theta_1 = theta_1 - 720
+if (theta_2 >= 720):
+    theta_2 = theta_2 - 720
+
+self.Lg.output_array[2].insert(0, theta_1)
+self.Lg.output_array[3].insert(0, theta_2)
+
+
+print('second_theta_1__in_invers_before', theta_1,theta_2)
