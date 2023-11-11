@@ -17,4 +17,4 @@ jobs:
         server: files.000webhost.com
         username: muhsite
         password: Muhib@1234
-        server_dir: "public_html/"
+        server_dir: "/public_html"
