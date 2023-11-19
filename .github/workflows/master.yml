@@ -18,4 +18,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        server_dir: "/"
+        server_dir: "/public_html/"
