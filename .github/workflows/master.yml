@@ -18,6 +18,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        local-dir: "/public_html/"      
+        local-dir: "/muhsite/public_html/"      
 
 
